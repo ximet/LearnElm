@@ -16,18 +16,22 @@ ships =
   [
     {
       name = "X-Wing",
-      cost = 149000
+      cost = 149000,
+      model = "light"
     },
     {
       name = "Falcon",
-      cost = 189999
+      cost = 189999,
+      model = "medium"
     },
     {
       name = "Death Star",
-      cost = 100000000000
+      cost = 100000000000,
+      model = "hard"
     }
   ]
 
+renderShip : StarShip -> Html msg
 renderShip ship =
   li []
      [
@@ -39,6 +43,13 @@ renderShip ship =
           ]
      ]
 
+numbers = [1, 2, 3, 4, 5]
+
+printThing : thing -> Html msg
+printThing thing =
+  ul [] [ text <| toString thing ]
+
+renderShips : List StarShip -> Html msg
 renderShips ships =
   div [
         style [
@@ -52,4 +63,4 @@ renderShips ships =
       ]
 
 main =
-  renderShips ships
+  ul [] (List.map printThing ships)
